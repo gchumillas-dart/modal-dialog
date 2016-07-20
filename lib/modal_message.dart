@@ -13,9 +13,6 @@ class ModalMessage {
               target
                 ..appendElement($('<div class="modal-content" />')
                   ..appendElement($('<div class="modal-header" />')
-                    ..appendElement($('<button type="button" class="close">')
-                      ..data["dismiss"] = "modal"
-                      ..html = '&times;')
                     ..appendElement($('<h3 />')..text = _title))
                   ..appendElement($('<div class="modal-body" />')
                     ..appendElement($('<p />')..text = _message))
@@ -29,7 +26,7 @@ class ModalMessage {
       })
       ..appendTo(find('body'));
 
-    Modal m = new Modal(md.nativeElement);
+    Modal m = new Modal(md.nativeElement, keyboard: false, backdrop: 'static');
     m.toggle();
   }
 }
