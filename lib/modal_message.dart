@@ -29,4 +29,8 @@ class ModalMessage {
     Modal m = new Modal(md.nativeElement, keyboard: false, backdrop: 'static');
     m.toggle();
   }
+
+  DomElement addButton(String title, {String type: 'default'}) => null;
+
+  void close() => null;
 }
