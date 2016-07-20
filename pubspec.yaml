@@ -3,17 +3,14 @@ version: 0.0.1
 description: Modal Dialog System
 author: Gonzalo Chumillas <gchumillas@email.com>
 homepage: https://github.com/soloproyectos-dart/modal-dialog
-
 environment:
   sdk: '>=1.0.0 <2.0.0'
-
 dependencies:
   bootjack: '>=0.6.5+5 <1.0.0'
   browser: '>=0.10.0 <0.11.0'
   dart_to_js_script_rewriter: '^1.0.1'
   domnode: ^2.0.1
   sass: ^0.4.2
-
 transformers:
 - sass
 - dart_to_js_script_rewriter
