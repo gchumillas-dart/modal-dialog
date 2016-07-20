@@ -5,7 +5,7 @@ class ModalMessage {
   final String _message;
 
   ModalMessage(this._title, this._message) {
-    DomElement md = $('<div class="modal" tabindex="-1" role="dialog" />')
+    DomElement md = $('<div class="modal" role="dialog" />')
       ..append((DomElement target) {
         target
           ..appendElement($('<div class="modal-dialog" />')
