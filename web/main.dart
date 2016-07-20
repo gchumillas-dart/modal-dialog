@@ -1,8 +1,6 @@
-// Copyright (c) 2016, <your name>. All rights reserved. Use of this source code
-// is governed by a BSD-style license that can be found in the LICENSE file.
-
-import 'dart:html';
+import 'package:modal_dialog/core.dart';
 
 void main() {
-  querySelector('#output').text = 'Your Dart app is running.';
+  ModalMessage modal = new ModalMessage('Title', 'Message');
+  print(modal);
 }
