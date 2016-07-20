@@ -1,0 +1,8 @@
+analyzer:
+  strong-mode: true
+  exclude:
+    - web/**
+linter:
+  rules:
+    - always_declare_return_types
+    - always_specify_types
