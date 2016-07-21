@@ -1,11 +1,11 @@
 part of modal_dialog;
 
 class ModalMessage {
-  final String _title;
-  final String _message;
+  DomElement _modalElement;
+  Modal _modal;
 
-  ModalMessage(this._title, this._message) {
-    DomElement md = $('<div class="modal" role="dialog" />')
+  ModalMessage(String title, String message) {
+    _modalElement = $('<div class="modal" role="dialog" />')
       ..append((DomElement target) {
         target
           ..appendElement($('<div class="modal-dialog" />')
@@ -13,24 +13,28 @@ class ModalMessage {
               target
                 ..appendElement($('<div class="modal-content" />')
                   ..appendElement($('<div class="modal-header" />')
-                    ..appendElement($('<h3 />')..text = _title))
+                    ..appendElement($('<h3 />')..text = title))
                   ..appendElement($('<div class="modal-body" />')
-                    ..appendElement($('<p />')..text = _message))
-                  ..appendElement($('<div class="modal-footer" />')
-                    ..appendElement($('<button class="btn btn-default">')
-                      ..data['dismiss'] = 'modal'
-                      ..text = 'Close')
-                    ..appendElement(
-                        $('<button class="btn btn-primary">')..text = 'Save')));
+                    ..appendElement($('<p />')..text = message))
+                  ..appendElement($('<div class="modal-footer" />')));
             }));
       })
       ..appendTo(find('body'));
 
-    Modal m = new Modal(md.nativeElement, keyboard: false, backdrop: 'static');
-    m.show();
+    _modal = new Modal(_modalElement.nativeElement,
+        keyboard: false, backdrop: 'static');
+    _modal.show();
   }
 
-  DomElement addButton(String title, {String type: 'default'}) => null;
+  DomElement addButton(String title, {String type: 'default'}) {
+    return $('<button class="btn">')
+      ..addClass('btn-${type}')
+      ..text = title
+      ..appendTo(_modalElement.find('.modal-footer'));
+  }
 
-  void close() => null;
+  void close() {
+    _modal.hide();
+    _modalElement.remove();
+  }
 }
