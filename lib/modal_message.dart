@@ -1,6 +1,6 @@
 part of modal_dialog;
 
-class ModalMessage {
+class ModalMessage extends ModalDialog {
   DomElement _modalElement;
   Modal _modal;
 

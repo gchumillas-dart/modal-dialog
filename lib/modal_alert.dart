@@ -1,6 +1,6 @@
 part of modal_dialog;
 
-class ModalAlert {
+class ModalAlert extends ModalDialog {
   ModalMessage _modal;
   DomElement _acceptButton;
 
