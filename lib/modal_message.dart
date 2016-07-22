@@ -4,7 +4,7 @@ class ModalMessage extends ModalDialog {
   DomElement _modalElement;
   Modal _modal;
 
-  ModalMessage(String title, String message) {
+  ModalMessage(String title, {String text}) {
     _modalElement = $('<div class="modal" role="dialog" />')
       ..append((DomElement target) {
         target
@@ -15,7 +15,7 @@ class ModalMessage extends ModalDialog {
                   ..appendElement($('<div class="modal-header" />')
                     ..appendElement($('<h3 />')..text = title))
                   ..appendElement($('<div class="modal-body" />')
-                    ..appendElement($('<p />')..text = message))
+                    ..appendElement($('<p />')..text = text))
                   ..appendElement($('<div class="modal-footer" />')));
             }));
       })

@@ -5,7 +5,7 @@ class ModalAlert extends ModalDialog {
   DomElement _acceptButton;
 
   ModalAlert(String title, String message) {
-    _modal = new ModalMessage(title, message);
+    _modal = new ModalMessage(title, text: message);
     _acceptButton = _modal.addButton('Accept', type: 'primary');
   }
 

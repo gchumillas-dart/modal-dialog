@@ -5,7 +5,7 @@ class ModalConfirm extends ModalDialog {
   DomElement _acceptButton;
 
   ModalConfirm(String title, String message) {
-    _modalMessage = new ModalMessage(title, message);
+    _modalMessage = new ModalMessage(title, text: message);
     _modalMessage.addButton('No')..on('click', () => _modalMessage.close());
     _acceptButton = _modalMessage.addButton('Yes', type: 'primary');
   }
