@@ -173,6 +173,8 @@ class ModalLoading extends ModalDialog {
   DomElement _cancelButton;
   Modal _modal;
 
+  DomElement get target => _target;
+
   ModalLoading() {
     _target = $('<div class="modal" role="dialog" />')
       ..append((DomElement target) {

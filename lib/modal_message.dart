@@ -5,6 +5,8 @@ class ModalMessage extends ModalDialog {
   DomElement _modalElement;
   Modal _modal;
 
+  DomElement get target => _modalElement;
+
   ModalMessage(String title, {String text, String html}) {
     if (text == null && html == null) {
       throw new ArgumentError.notNull('text or html');
