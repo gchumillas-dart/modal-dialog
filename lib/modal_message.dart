@@ -1,6 +1,5 @@
 part of modal_dialog;
 
-// TODO: target getter
 class ModalMessage extends ModalDialog {
   DomElement _target;
   Modal _modal;
