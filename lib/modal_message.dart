@@ -44,9 +44,4 @@ class ModalMessage extends ModalDialog {
       ..text = title
       ..appendTo(_target.find('.modal-footer'));
   }
-
-  void close() {
-    _modal.hide();
-    _target.remove();
-  }
 }

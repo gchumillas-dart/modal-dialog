@@ -45,10 +45,5 @@ class ModalLoading extends ModalDialog {
 
   Modal get modal => _modal;
 
-  void close() {
-    _modal.hide();
-    _target.remove();
-  }
-
   void onCancel(Function listener) => _cancelButton.on('click', listener);
 }

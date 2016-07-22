@@ -12,7 +12,5 @@ class ModalConfirm extends ModalDialog {
 
   Modal get modal => _modalMessage.modal;
 
-  void close() => _modalMessage.close();
-
   void onAccept(Function listener) => _acceptButton.on('click', listener);
 }
