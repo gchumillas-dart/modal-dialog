@@ -36,7 +36,7 @@ class ModalMessage extends ModalDialog {
     _modal.show();
   }
 
-  Modal get target => _modal;
+  Modal get modal => _modal;
 
   DomElement addButton(String title, {String type: 'default'}) {
     return $('<button class="btn">')
