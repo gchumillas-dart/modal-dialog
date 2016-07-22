@@ -4,7 +4,11 @@ class ModalMessage extends ModalDialog {
   DomElement _modalElement;
   Modal _modal;
 
-  ModalMessage(String title, {String text}) {
+  ModalMessage(String title, {String text, String html}) {
+    if (text == null && html == null) {
+      throw new ArgumentError.notNull('text or html');
+    }
+
     _modalElement = $('<div class="modal" role="dialog" />')
       ..append((DomElement target) {
         target
@@ -15,7 +19,13 @@ class ModalMessage extends ModalDialog {
                   ..appendElement($('<div class="modal-header" />')
                     ..appendElement($('<h3 />')..text = title))
                   ..appendElement($('<div class="modal-body" />')
-                    ..appendElement($('<p />')..text = text))
+                    ..append((DomElement target) {
+                      if (text != null) {
+                        target.appendElement($('<p />')..text = text);
+                      } else {
+                        target.appendString(html);
+                      }
+                    }))
                   ..appendElement($('<div class="modal-footer" />')));
             }));
       })
