@@ -8,8 +8,6 @@ class ModalLoading extends ModalDialog {
   DomElement _cancelButton;
   Modal _modal;
 
-  DomElement get target => _target;
-
   ModalLoading() {
     _target = $('<div class="modal" role="dialog" />')
       ..append((DomElement target) {
@@ -42,10 +40,12 @@ class ModalLoading extends ModalDialog {
     _modal.show();
   }
 
-  void onCancel(Function listener) => _cancelButton.on('click', listener);
+  DomElement get target => _target;
 
   void close() {
     _modal.hide();
     _target.remove();
   }
+
+  void onCancel(Function listener) => _cancelButton.on('click', listener);
 }

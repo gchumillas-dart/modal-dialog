@@ -5,8 +5,6 @@ class ModalMessage extends ModalDialog {
   DomElement _target;
   Modal _modal;
 
-  DomElement get target => _target;
-
   ModalMessage(String title, {String text, String html}) {
     if (text == null && html == null) {
       throw new ArgumentError.notNull('text or html');
@@ -38,6 +36,8 @@ class ModalMessage extends ModalDialog {
         new Modal(_target.nativeElement, keyboard: false, backdrop: 'static');
     _modal.show();
   }
+
+  DomElement get target => _target;
 
   DomElement addButton(String title, {String type: 'default'}) {
     return $('<button class="btn">')
