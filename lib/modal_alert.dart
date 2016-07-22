@@ -9,9 +9,7 @@ class ModalAlert extends ModalDialog {
     _acceptButton = _modal.addButton('Accept', type: 'primary');
   }
 
-  void onAccept(Function listener) {
-    _acceptButton.on('click', listener);
-  }
+  void onAccept(Function listener) => _acceptButton.on('click', listener);
 
   void close() {
     _modal.close();
