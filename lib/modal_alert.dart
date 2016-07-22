@@ -1,17 +1,17 @@
 part of modal_dialog;
 
 class ModalAlert extends ModalDialog {
-  ModalMessage _modal;
+  ModalMessage _modalMessage;
   DomElement _acceptButton;
 
-  DomElement get target => _modal.target;
+  DomElement get target => _modalMessage.target;
 
   ModalAlert(String title, {String text, String html}) {
-    _modal = new ModalMessage(title, text: text, html: html);
-    _acceptButton = _modal.addButton('Accept', type: 'primary');
+    _modalMessage = new ModalMessage(title, text: text, html: html);
+    _acceptButton = _modalMessage.addButton('Accept', type: 'primary');
   }
 
   void onAccept(Function listener) => _acceptButton.on('click', listener);
 
-  void close() => _modal.close();
+  void close() => _modalMessage.close();
 }

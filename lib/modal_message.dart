@@ -2,17 +2,17 @@ part of modal_dialog;
 
 // TODO: target getter
 class ModalMessage extends ModalDialog {
-  DomElement _modalElement;
+  DomElement _target;
   Modal _modal;
 
-  DomElement get target => _modalElement;
+  DomElement get target => _target;
 
   ModalMessage(String title, {String text, String html}) {
     if (text == null && html == null) {
       throw new ArgumentError.notNull('text or html');
     }
 
-    _modalElement = $('<div class="modal" role="dialog" />')
+    _target = $('<div class="modal" role="dialog" />')
       ..append((DomElement target) {
         target
           ..appendElement($('<div class="modal-dialog" />')
@@ -34,8 +34,8 @@ class ModalMessage extends ModalDialog {
       })
       ..appendTo(find('body'));
 
-    _modal = new Modal(_modalElement.nativeElement,
-        keyboard: false, backdrop: 'static');
+    _modal =
+        new Modal(_target.nativeElement, keyboard: false, backdrop: 'static');
     _modal.show();
   }
 
@@ -43,11 +43,11 @@ class ModalMessage extends ModalDialog {
     return $('<button class="btn">')
       ..addClass('btn-${type}')
       ..text = title
-      ..appendTo(_modalElement.find('.modal-footer'));
+      ..appendTo(_target.find('.modal-footer'));
   }
 
   void close() {
     _modal.hide();
-    _modalElement.remove();
+    _target.remove();
   }
 }
