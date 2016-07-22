@@ -43,7 +43,7 @@ class ModalLoading extends ModalDialog {
     _modal.show();
   }
 
-  DomElement get target => _target;
+  Modal get target => _modal;
 
   void close() {
     _modal.hide();

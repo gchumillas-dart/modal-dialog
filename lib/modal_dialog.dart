@@ -1,7 +1,7 @@
 part of modal_dialog;
 
 abstract class ModalDialog {
-  DomElement get target;
+  Modal get target;
 
   void close();
 }
