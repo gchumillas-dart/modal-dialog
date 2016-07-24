@@ -12,30 +12,30 @@ class ModalLoading extends ModalDialog {
     }
 
     DomElement target = $('<div class="modal" role="dialog" />')
-      ..append((DomElement target) {
+      ..add((DomElement target) {
         target
-          ..appendElement($('<div class="modal-dialog modal-sm" />')
-            ..append((DomElement target) {
+          ..addElement($('<div class="modal-dialog modal-sm" />')
+            ..add((DomElement target) {
               target
-                ..appendElement($('<div class="modal-content" />')
-                  ..appendElement($('<div class="modal-body" />')
-                    ..appendElement($('<div />')
+                ..addElement($('<div class="modal-content" />')
+                  ..addElement($('<div class="modal-body" />')
+                    ..addElement($('<div />')
                       ..css['display'] = 'table'
                       ..css['text-align'] = 'center'
                       ..css['margin'] = '0 auto'
-                      ..appendElement($('<p>')
-                        ..appendElement($('<img />')
+                      ..addElement($('<p>')
+                        ..addElement($('<img />')
                           ..attr['src'] = image
                           ..attr['alt'] = 'Loading...'))
-                      ..append((DomElement target) {
+                      ..add((DomElement target) {
                         _cancelButton = $(
                             '<button type="button" class="btn btn-primary" />')
                           ..text = 'Cancel'
-                          ..appendTo(target);
+                          ..addTo(target);
                       }))));
             }));
       })
-      ..appendTo(find('body'));
+      ..addTo(find('body'));
 
     _modal =
         new Modal(target.nativeElement, keyboard: false, backdrop: 'static');

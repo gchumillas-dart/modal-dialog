@@ -10,26 +10,26 @@ class ModalMessage extends ModalDialog {
     }
 
     _target = $('<div class="modal" role="dialog" />')
-      ..append((DomElement target) {
+      ..add((DomElement target) {
         target
-          ..appendElement($('<div class="modal-dialog" />')
-            ..append((DomElement target) {
+          ..addElement($('<div class="modal-dialog" />')
+            ..add((DomElement target) {
               target
-                ..appendElement($('<div class="modal-content" />')
-                  ..appendElement($('<div class="modal-header" />')
-                    ..appendElement($('<h3 />')..text = title))
-                  ..appendElement($('<div class="modal-body" />')
-                    ..append((DomElement target) {
+                ..addElement($('<div class="modal-content" />')
+                  ..addElement($('<div class="modal-header" />')
+                    ..addElement($('<h3 />')..text = title))
+                  ..addElement($('<div class="modal-body" />')
+                    ..add((DomElement target) {
                       if (text != null) {
-                        target.appendElement($('<p />')..text = text);
+                        target.addElement($('<p />')..text = text);
                       } else {
-                        target.appendString(html);
+                        target.addString(html);
                       }
                     }))
-                  ..appendElement($('<div class="modal-footer" />')));
+                  ..addElement($('<div class="modal-footer" />')));
             }));
       })
-      ..appendTo(find('body'));
+      ..addTo(find('body'));
 
     _modal =
         new Modal(_target.nativeElement, keyboard: false, backdrop: 'static');
@@ -42,6 +42,6 @@ class ModalMessage extends ModalDialog {
     return $('<button class="btn">')
       ..addClass('btn-${type}')
       ..text = title
-      ..appendTo(_target.find('.modal-footer'));
+      ..addTo(_target.find('.modal-footer'));
   }
 }
