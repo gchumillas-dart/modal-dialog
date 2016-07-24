@@ -2,7 +2,6 @@ part of modal_dialog;
 
 class ModalAlert extends ModalDialog {
   ModalMessage _modalMessage;
-  DomElement _acceptButton;
 
   /// Creates a modal alert dialog with a [title] and a message.
   ///
@@ -11,8 +10,7 @@ class ModalAlert extends ModalDialog {
   ModalAlert(String title,
       {String text, String html, ActionCallback accept: defaultAction}) {
     _modalMessage = new ModalMessage(title, text: text, html: html);
-    _acceptButton = _modalMessage.addButton('Accept', type: 'primary');
-    _acceptButton.on('click', () => accept(this));
+    _modalMessage.addButton('Accept', action: accept, type: 'primary');
   }
 
   Modal get modal => _modalMessage.modal;
