@@ -6,6 +6,9 @@ const String _defaultLoadingImage =
 class ModalLoading extends ModalDialog {
   Modal _modal;
 
+  /// Creates a modal loading dialog with a loading [image].
+  ///
+  /// The [cancel] callback is called when the user presses the 'Cancel' button.
   ModalLoading(
       {String image: _defaultLoadingImage,
       ActionCallback cancel: defaultAction}) {
