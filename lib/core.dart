@@ -1,3 +1,8 @@
+/// A Modal Dialog System based on Bootstrap.
+///
+/// This library provides a set of modal dialogs based on the Bootstrap
+/// framework.
+///
 library modal_dialog;
 
 import 'package:bootjack/bootjack.dart';
