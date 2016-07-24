@@ -10,6 +10,4 @@ class ModalAlert extends ModalDialog {
   }
 
   Modal get modal => _modalMessage.modal;
-
-  void onAccept(Function listener) => _acceptButton.on('click', listener);
 }
