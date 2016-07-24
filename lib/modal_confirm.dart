@@ -1,5 +1,6 @@
 part of modal_dialog;
 
+// TODO: implement i18n
 class ModalConfirm extends ModalDialog {
   ModalMessage _modalMessage;
 
