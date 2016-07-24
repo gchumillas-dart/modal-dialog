@@ -1,6 +1,6 @@
 part of modal_dialog;
 
-typedef void ActionCallback(ModalDialog dialog);
+typedef void Callback(ModalDialog dialog);
 
 abstract class ModalDialog {
   Modal get modal;

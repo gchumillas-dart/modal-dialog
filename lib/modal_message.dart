@@ -39,7 +39,7 @@ class ModalMessage extends ModalDialog {
   Modal get modal => _modal;
 
   DomElement addButton(String title,
-      {String type: 'default', ActionCallback action}) {
+      {String type: 'default', Callback action}) {
     DomElement button = $('<button class="btn">')
       ..addClass('btn-${type}')
       ..text = title
