@@ -4,6 +4,9 @@ class ModalMessage extends ModalDialog {
   DomElement _target;
   Modal _modal;
 
+  /// Creates a modal message dialog with a [title] and a text.
+  ///
+  /// The message can be either a plain [text] or a [html] text.
   ModalMessage(String title, {String text, String html}) {
     if (text == null && html == null) {
       throw new ArgumentError.notNull('text or html');
@@ -38,6 +41,15 @@ class ModalMessage extends ModalDialog {
 
   Modal get modal => _modal;
 
+  /// Adds a button to the modal dialog.
+  ///
+  /// This function creates a button with a [title] and adds it to the footer
+  /// of the modal dialog. The button can be any of the available bootstrap's
+  /// button types: 'default', 'primary', etc...
+  ///
+  /// When the user presses the button, it calls the [action] callback. If this
+  /// parameter is not present, the default action is closing the dialog.
+  ///
   DomElement addButton(String title,
       {String type: 'default', ActionCallback action: defaultAction}) {
     return $('<button class="btn">')
