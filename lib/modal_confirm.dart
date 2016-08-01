@@ -8,12 +8,11 @@ class ModalConfirm extends ModalDialog {
   /// The message can be either a plain [text] or a [html] text.
   /// The [cancel] and [accept] callbacks are called when the 'Cancel' or
   /// 'Accept' button are pressed, respectively.
-  ModalConfirm(String title,
-      {String text,
-      String html,
+  ModalConfirm(String title, String text,
+      {bool html,
       ActionCallback cancel: defaultAction,
       ActionCallback accept: defaultAction}) {
-    _modalMessage = new ModalMessage(title, text: text, html: html);
+    _modalMessage = new ModalMessage(title, text, html: html);
 
     _modalMessage
       ..addButton(ButtonMessage.cancel, action: cancel)

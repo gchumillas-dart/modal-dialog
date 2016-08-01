@@ -9,10 +9,10 @@ class ModalAlert extends ModalDialog {
   ///
   /// The message can be either a plain [text] or a [html] text.
   /// The [accept] function is called when the 'Accept' button is pressed.
-  ModalAlert(String title,
-      {String text, String html, ActionCallback accept: defaultAction}) {
+  ModalAlert(String title, String text,
+      {bool html, ActionCallback accept: defaultAction}) {
     initializeMessages(Intl.defaultLocale).then((dynamic _) {
-      _modalMessage = new ModalMessage(title, text: text, html: html);
+      _modalMessage = new ModalMessage(title, text, html: html);
       _modalMessage.addButton(ButtonMessage.accept,
           action: accept, type: 'primary');
     });

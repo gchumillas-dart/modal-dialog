@@ -7,11 +7,7 @@ class ModalMessage extends ModalDialog {
   /// Creates a modal message dialog with a [title] and a text.
   ///
   /// The message can be either a plain [text] or a [html] text.
-  ModalMessage(String title, {String text, String html}) {
-    if (text == null && html == null) {
-      throw new ArgumentError.notNull('text or html');
-    }
-
+  ModalMessage(String title, String text, {bool html: false}) {
     _target = $('<div class="modal" role="dialog" />')
       ..add((DomElement target) {
         target
@@ -23,10 +19,10 @@ class ModalMessage extends ModalDialog {
                     ..addElement($('<h3 />')..text = title))
                   ..addElement($('<div class="modal-body" />')
                     ..add((DomElement target) {
-                      if (text != null) {
-                        target.addElement($('<p />')..text = text);
+                      if (html) {
+                        target.addString(text);
                       } else {
-                        target.addString(html);
+                        target.addElement($('<p />')..text = text);
                       }
                     }))
                   ..addElement($('<div class="modal-footer" />')));
