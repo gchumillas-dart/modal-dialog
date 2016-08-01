@@ -1,0 +1,13 @@
+{
+  "_locale": "ar_001",
+  "ButtonMessage_accept": "قبول",
+  "@ButtonMessage_accept": {
+    "type": "text",
+    "placeholders": {}
+  },
+  "ButtonMessage_cancel": "إلغاء",
+  "@ButtonMessage_cancel": {
+    "type": "text",
+    "placeholders": {}
+  }
+}

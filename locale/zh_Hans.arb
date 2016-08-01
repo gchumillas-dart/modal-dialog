@@ -1,0 +1,13 @@
+{
+  "_locale": "zh_Hans",
+  "ButtonMessage_accept": "接听",
+  "@ButtonMessage_accept": {
+    "type": "text",
+    "placeholders": {}
+  },
+  "ButtonMessage_cancel": "取消",
+  "@ButtonMessage_cancel": {
+    "type": "text",
+    "placeholders": {}
+  }
+}

@@ -1,0 +1,13 @@
+{
+  "_locale": "es_ES",
+  "ButtonMessage_accept": "Aceptar",
+  "@ButtonMessage_accept": {
+    "type": "text",
+    "placeholders": {}
+  },
+  "ButtonMessage_cancel": "Cancelar",
+  "@ButtonMessage_cancel": {
+    "type": "text",
+    "placeholders": {}
+  }
+}

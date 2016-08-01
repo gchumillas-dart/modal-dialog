@@ -1,0 +1,13 @@
+{
+  "_locale": "ja_JP",
+  "ButtonMessage_accept": "受け入れ",
+  "@ButtonMessage_accept": {
+    "type": "text",
+    "placeholders": {}
+  },
+  "ButtonMessage_cancel": "取り消す",
+  "@ButtonMessage_cancel": {
+    "type": "text",
+    "placeholders": {}
+  }
+}

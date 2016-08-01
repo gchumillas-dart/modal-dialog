@@ -30,7 +30,7 @@ class ModalLoading extends ModalDialog {
                           ..attr['alt'] = 'Loading...'))
                       ..addElement(
                           $('<button type="button" class="btn btn-primary" />')
-                            ..text = 'Cancel'
+                            ..text = ButtonMessage.cancel
                             ..on('click', () => cancel(this))
                             ..addTo(target)))));
             }));

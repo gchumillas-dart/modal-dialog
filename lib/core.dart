@@ -5,10 +5,15 @@
 ///
 library modal_dialog;
 
+import 'dart:async';
+
 import 'package:bootjack/bootjack.dart';
 import 'package:domelement/core.dart';
+import 'package:intl/intl.dart';
 
 import 'src/action_callback.dart';
+import 'src/intl/locale/messages_all.dart';
+import 'src/intl/messages.dart';
 
 part 'modal_alert.dart';
 part 'modal_confirm.dart';

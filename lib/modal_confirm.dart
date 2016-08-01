@@ -1,6 +1,5 @@
 part of modal_dialog;
 
-// TODO: implement i18n
 class ModalConfirm extends ModalDialog {
   ModalMessage _modalMessage;
 
@@ -17,8 +16,8 @@ class ModalConfirm extends ModalDialog {
     _modalMessage = new ModalMessage(title, text: text, html: html);
 
     _modalMessage
-      ..addButton('Cancel', action: cancel)
-      ..addButton('Accept', action: accept, type: 'primary');
+      ..addButton(ButtonMessage.cancel, action: cancel)
+      ..addButton(ButtonMessage.accept, action: accept, type: 'primary');
   }
 
   Modal get modal => _modalMessage.modal;

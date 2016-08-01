@@ -1,0 +1,13 @@
+{
+  "_locale": "ru_RU",
+  "ButtonMessage_accept": "Accept (Подтверждение)",
+  "@ButtonMessage_accept": {
+    "type": "text",
+    "placeholders": {}
+  },
+  "ButtonMessage_cancel": "Отмена",
+  "@ButtonMessage_cancel": {
+    "type": "text",
+    "placeholders": {}
+  }
+}
