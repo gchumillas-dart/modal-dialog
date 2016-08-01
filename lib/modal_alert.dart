@@ -18,5 +18,5 @@ class ModalAlert extends ModalDialog {
     });
   }
 
-  Modal get modal => _modalMessage.modal;
+  Modal get modal => _modalMessage?.modal;
 }

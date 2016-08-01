@@ -19,5 +19,5 @@ class ModalConfirm extends ModalDialog {
       ..addButton(ButtonMessage.accept, action: accept, type: 'primary');
   }
 
-  Modal get modal => _modalMessage.modal;
+  Modal get modal => _modalMessage?.modal;
 }
