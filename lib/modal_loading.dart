@@ -43,4 +43,6 @@ class ModalLoading extends ModalDialog {
   }
 
   Modal get modal => _modal;
+
+  Future<Modal> open() => null;
 }

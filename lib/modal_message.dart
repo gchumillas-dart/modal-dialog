@@ -7,7 +7,7 @@ class ModalMessage extends ModalDialog {
   /// Creates a modal message dialog with a [title] and a text.
   ///
   /// The message can be either a plain [text] or a [html] text.
-  ModalMessage(String title, String text, {bool html: false}) {
+  ModalMessage(String title, String text, {bool html: false, bool show: true}) {
     _target = $('<div class="modal" role="dialog" />')
       ..add((DomElement target) {
         target
@@ -30,12 +30,13 @@ class ModalMessage extends ModalDialog {
       })
       ..addTo(find('body'));
 
+    // Creates a modal dialog and eventually shows it
     _modal =
         new Modal(_target.nativeElement, keyboard: false, backdrop: 'static');
-    _modal.show();
+    if (show) {
+      open();
+    }
   }
-
-  Modal get modal => _modal;
 
   /// Adds a button to the modal dialog.
   ///
@@ -47,11 +48,15 @@ class ModalMessage extends ModalDialog {
   /// parameter is not present, the default action is closing the dialog.
   ///
   DomElement addButton(String title,
-      {String type: 'default', ActionCallback action: defaultAction}) {
-    return $('<button class="btn">')
-      ..addClass('btn-${type}')
-      ..text = title
-      ..addTo(_target.find('.modal-footer'))
-      ..on('click', () => action(this));
-  }
+          {String type: 'default', ActionCallback action: defaultAction}) =>
+      $('<button class="btn">')
+        ..addClass('btn-${type}')
+        ..text = title
+        ..addTo(_target.find('.modal-footer'))
+        ..on('click', () => action(this));
+
+  Future<Modal> open() => new Future<Modal>(() {
+        _modal.show();
+        return _modal;
+      });
 }

@@ -1,12 +1,13 @@
 part of modal_dialog;
 
 abstract class ModalDialog {
-  /// Gets the modal instance
-  Modal get modal;
+  /// Opens the modal dialog
+  Future<Modal> open();
 
   /// Closes the modal dialog
-  void close() {
-    modal.hide();
-    modal.element.remove();
+  Future<Null> close() async {
+    Modal m = await open();
+    m.hide();
+    m.element.remove();
   }
 }

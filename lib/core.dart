@@ -5,6 +5,8 @@
 ///
 library modal_dialog;
 
+import 'dart:async';
+
 import 'package:bootjack/bootjack.dart';
 import 'package:domelement/core.dart';
 import 'package:intl/intl.dart';
