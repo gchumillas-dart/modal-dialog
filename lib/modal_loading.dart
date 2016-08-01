@@ -11,6 +11,7 @@ class ModalLoading extends ModalDialog {
   /// The [cancel] callback is called when the user presses the 'Cancel' button.
   ModalLoading(
       {String image: _defaultLoadingImage,
+      bool show: true,
       ActionCallback cancel: defaultAction}) {
     DomElement target = $('<div class="modal" role="dialog" />')
       ..add((DomElement target) {
@@ -39,10 +40,13 @@ class ModalLoading extends ModalDialog {
 
     _modal =
         new Modal(target.nativeElement, keyboard: false, backdrop: 'static');
-    _modal.show();
+    if (show) {
+      open();
+    }
   }
 
-  Modal get modal => _modal;
-
-  Future<Modal> open() => null;
+  Future<Modal> open() => new Future<Modal>(() {
+        _modal.show();
+        return _modal;
+      });
 }
