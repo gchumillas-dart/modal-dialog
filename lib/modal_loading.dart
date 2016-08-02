@@ -12,7 +12,7 @@ class ModalLoading extends ModalDialog {
   ModalLoading(
       {String image: _defaultLoadingImage,
       bool show: true,
-      ActionCallback cancel: defaultAction}) {
+      _ActionCallback cancel: _defaultAction}) {
     DomElement target = $('<div class="modal" role="dialog" />')
       ..add((DomElement target) {
         target

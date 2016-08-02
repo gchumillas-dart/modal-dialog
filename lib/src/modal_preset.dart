@@ -1,5 +1,11 @@
 part of modal_dialog;
 
+void _defaultAction(ModalDialog dialog) {
+  dialog.close();
+}
+
+typedef void _ActionCallback(ModalDialog dialog);
+
 abstract class _ModalPreset extends ModalMessage {
   String _locale;
 

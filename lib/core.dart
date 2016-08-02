@@ -12,7 +12,6 @@ import 'package:domelement/core.dart';
 import 'package:intl/intl.dart';
 import 'package:intl/intl_browser.dart';
 
-import 'src/action_callback.dart';
 import 'src/intl/locale/messages_all.dart';
 import 'src/intl/messages.dart';
 

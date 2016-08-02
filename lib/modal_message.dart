@@ -46,7 +46,7 @@ class ModalMessage extends ModalDialog {
   /// parameter is not present, the default action is closing the dialog.
   ///
   DomElement addButton(String title,
-          {String type: 'default', ActionCallback action: defaultAction}) =>
+          {String type: 'default', _ActionCallback action: _defaultAction}) =>
       $('<button class="btn">')
         ..addClass('btn-${type}')
         ..text = title

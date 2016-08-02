@@ -2,8 +2,8 @@ part of modal_dialog;
 
 class ModalConfirm extends _ModalPreset {
   Future<Modal> _open;
-  ActionCallback _accept;
-  ActionCallback _cancel;
+  _ActionCallback _accept;
+  _ActionCallback _cancel;
 
   /// Creates a modal confirm dialog with a [text] and a message.
   ///
@@ -14,8 +14,8 @@ class ModalConfirm extends _ModalPreset {
       {bool html,
       bool show: true,
       String locale,
-      ActionCallback accept: defaultAction,
-      ActionCallback cancel: defaultAction})
+      _ActionCallback accept: _defaultAction,
+      _ActionCallback cancel: _defaultAction})
       : super(locale, title, text, html: html) {
     this._locale = locale;
     this._accept = accept;
