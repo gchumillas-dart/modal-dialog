@@ -1,4 +1,4 @@
-/// A Modal Dialog System based on Bootstrap.
+/// A Modal Dialog System based on the Bootstrap framework.
 ///
 /// This library provides a set of modal dialogs based on the Bootstrap
 /// framework.

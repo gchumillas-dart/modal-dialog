@@ -1,12 +1,15 @@
 part of modal_dialog;
 
+/// A modal message.
+///
+/// It consists on a modal message with some buttons.
 class ModalMessage extends ModalDialog {
   DomElement _target;
   Modal _modal;
 
-  /// Creates a modal message dialog with a [title] and a text.
+  /// Creates a modal message dialog with a [title] and a [text].
   ///
-  /// The message can be either a plain [text] or a [html] text.
+  /// The text can be either plain-text or HTML, depending on the [html] flag.
   ModalMessage(String title, String text, {bool html, bool show: true}) {
     _target = $('<div class="modal" role="dialog" />')
       ..add((DomElement target) {
