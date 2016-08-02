@@ -33,9 +33,7 @@ class ModalMessage extends ModalDialog {
     // Creates a modal dialog and eventually shows it
     _modal =
         new Modal(_target.nativeElement, keyboard: false, backdrop: 'static');
-    if (show) {
-      open();
-    }
+    if (show) open();
   }
 
   /// Adds a button to the modal dialog.

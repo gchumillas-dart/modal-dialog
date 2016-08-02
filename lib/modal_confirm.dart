@@ -18,9 +18,7 @@ class ModalConfirm extends ModalMessage {
       : super(title, text, html: html, show: false) {
     this._accept = accept;
     this._cancel = cancel;
-    if (show) {
-      open();
-    }
+    if (show) open();
   }
 
   @override

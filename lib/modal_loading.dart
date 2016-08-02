@@ -40,9 +40,7 @@ class ModalLoading extends ModalDialog {
 
     _modal =
         new Modal(target.nativeElement, keyboard: false, backdrop: 'static');
-    if (show) {
-      open();
-    }
+    if (show) open();
   }
 
   @override
