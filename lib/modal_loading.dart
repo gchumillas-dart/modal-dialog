@@ -45,5 +45,6 @@ class ModalLoading extends ModalDialog {
     }
   }
 
+  @override
   Future<Modal> open() => new Future<Modal>.value(_modal..show());
 }
