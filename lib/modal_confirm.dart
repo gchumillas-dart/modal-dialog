@@ -20,20 +20,14 @@ class ModalConfirm extends ModalMessage {
     open();
   }
 
-  Future<Modal> open() async {
+  @override
+  Future<Modal> open() {
     if (_open == null) {
       _open = new Future<Modal>(() async {
-        await new Future.delayed(new Duration(seconds: 1), () {
-          initializeMessages(Intl.defaultLocale).then((dynamic _) {
-            addButton(ButtonMessage.cancel, action: _cancel);
-            addButton(ButtonMessage.accept, action: _accept, type: 'primary');
-          });
-        });
-        /*
         await initializeMessages(Intl.defaultLocale).then((dynamic _) {
           addButton(ButtonMessage.cancel, action: _cancel);
           addButton(ButtonMessage.accept, action: _accept, type: 'primary');
-        });*/
+        });
         return super.open();
       });
     }
