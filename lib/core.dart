@@ -21,3 +21,4 @@ part 'modal_confirm.dart';
 part 'modal_dialog.dart';
 part 'modal_loading.dart';
 part 'modal_message.dart';
+part 'src/modal_preset.dart';

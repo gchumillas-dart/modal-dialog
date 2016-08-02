@@ -3,9 +3,8 @@ part of modal_dialog;
 // TODO: button messages are customizables (acceptLabel)
 // TODO: locale parameters
 // TODO: colors (warning, etc...)
-class ModalAlert extends ModalMessage {
+class ModalAlert extends _ModalPreset {
   Future<Modal> _open;
-  String _locale;
   ActionCallback _accept;
 
   /// Creates a modal alert dialog with a [title] and a message.
@@ -17,7 +16,7 @@ class ModalAlert extends ModalMessage {
       bool show: true,
       String locale,
       ActionCallback accept: defaultAction})
-      : super(title, text, html: html, show: false) {
+      : super(locale, title, text, html: html) {
     this._locale = locale;
     this._accept = accept;
     if (show) {
@@ -39,21 +38,5 @@ class ModalAlert extends ModalMessage {
       });
     }
     return _open;
-  }
-
-  Future<String> _getLocale() async {
-    String ret;
-    Stream<String> locales = new Stream<String>.fromFutures(<Future<String>>[
-      new Future<String>.value(_locale),
-      new Future<String>.value(Intl.defaultLocale),
-      findSystemLocale()
-    ]);
-    await for (String locale in locales) {
-      if (locale != null && locale.length > 0) {
-        ret = locale;
-        break;
-      }
-    }
-    return ret;
   }
 }

@@ -1,8 +1,7 @@
 part of modal_dialog;
 
-class ModalConfirm extends ModalMessage {
+class ModalConfirm extends _ModalPreset {
   Future<Modal> _open;
-  String _locale;
   ActionCallback _accept;
   ActionCallback _cancel;
 
@@ -17,7 +16,7 @@ class ModalConfirm extends ModalMessage {
       String locale,
       ActionCallback accept: defaultAction,
       ActionCallback cancel: defaultAction})
-      : super(title, text, html: html, show: false) {
+      : super(locale, title, text, html: html) {
     this._locale = locale;
     this._accept = accept;
     this._cancel = cancel;
@@ -38,21 +37,5 @@ class ModalConfirm extends ModalMessage {
       });
     }
     return _open;
-  }
-
-  Future<String> _getLocale() async {
-    String ret;
-    Stream<String> locales = new Stream<String>.fromFutures(<Future<String>>[
-      new Future<String>.value(_locale),
-      new Future<String>.value(Intl.defaultLocale),
-      findSystemLocale()
-    ]);
-    await for (String locale in locales) {
-      if (locale != null && locale.length > 0) {
-        ret = locale;
-        break;
-      }
-    }
-    return ret;
   }
 }
