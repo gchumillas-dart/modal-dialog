@@ -1,7 +1,6 @@
 part of modal_dialog;
 
 // TODO: button messages are customizables (acceptLabel)
-// TODO: locale parameters
 // TODO: colors (warning, etc...)
 class ModalAlert extends _ModalPreset {
   Future<Modal> _open;
