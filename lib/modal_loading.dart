@@ -26,7 +26,7 @@ class ModalLoading extends ModalDialog {
                       ..css['display'] = 'table'
                       ..css['text-align'] = 'center'
                       ..css['margin'] = '0 auto'
-                      ..addElement($('<p>')
+                      ..addElement($('<p />')
                         ..addElement($('<img />')
                           ..attr['src'] = image
                           ..attr['alt'] = 'Loading...'))
