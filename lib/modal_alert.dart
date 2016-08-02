@@ -2,7 +2,7 @@ part of modal_dialog;
 
 // TODO: button messages are customizables (acceptLabel)
 // TODO: locale parameters
-// TODO: show parameter
+// TODO: colors (warning, etc...)
 class ModalAlert extends ModalMessage {
   Future<Modal> _open;
   ActionCallback _accept;
@@ -12,10 +12,12 @@ class ModalAlert extends ModalMessage {
   /// The message can be either a plain [text] or a [html] text.
   /// The [accept] function is called when the 'Accept' button is pressed.
   ModalAlert(String title, String text,
-      {bool html, ActionCallback accept: defaultAction})
+      {bool html, bool show: true, ActionCallback accept: defaultAction})
       : super(title, text, html: html, show: false) {
     this._accept = accept;
-    open();
+    if (show) {
+      open();
+    }
   }
 
   @override

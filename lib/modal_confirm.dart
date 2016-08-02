@@ -12,12 +12,15 @@ class ModalConfirm extends ModalMessage {
   /// 'Accept' button are pressed, respectively.
   ModalConfirm(String title, String text,
       {bool html,
+      bool show: true,
       ActionCallback accept: defaultAction,
       ActionCallback cancel: defaultAction})
       : super(title, text, html: html, show: false) {
     this._accept = accept;
     this._cancel = cancel;
-    open();
+    if (show) {
+      open();
+    }
   }
 
   @override
