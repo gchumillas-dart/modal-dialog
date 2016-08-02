@@ -1,6 +1,5 @@
 part of modal_dialog;
 
-// TODO: colors (warning, etc...)
 class ModalAlert extends _ModalPreset {
   Future<Modal> _open;
   String _acceptLabel;
