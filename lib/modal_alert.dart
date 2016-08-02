@@ -1,9 +1,9 @@
 part of modal_dialog;
 
-// TODO: button messages are customizables (acceptLabel)
 // TODO: colors (warning, etc...)
 class ModalAlert extends _ModalPreset {
   Future<Modal> _open;
+  String _acceptLabel;
   _ActionCallback _accept;
 
   /// Creates a modal alert dialog with a [title] and a message.
@@ -14,9 +14,11 @@ class ModalAlert extends _ModalPreset {
       {bool html,
       bool show: true,
       String locale,
+      String acceptLabel,
       _ActionCallback accept: _defaultAction})
       : super(locale, title, text, html: html) {
     this._locale = locale;
+    this._acceptLabel = acceptLabel;
     this._accept = accept;
     if (show) {
       open();
@@ -31,7 +33,7 @@ class ModalAlert extends _ModalPreset {
         await initializeMessages(locale);
         Intl.withLocale(
             locale,
-            () => addButton(ButtonMessage.accept,
+            () => addButton(_acceptLabel ?? ButtonMessage.accept,
                 action: _accept, type: 'primary'));
         return super.open();
       });
