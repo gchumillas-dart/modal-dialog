@@ -2,35 +2,32 @@ part of modal_dialog;
 
 // TODO: button messages are customizables (acceptLabel)
 // TODO: locale parameters
-class ModalAlert extends ModalDialog {
-  String _title;
-  String _text;
-  bool _html;
+// TODO: show parameter
+class ModalAlert extends ModalMessage {
+  Future<Modal> _open;
   ActionCallback _accept;
-  ModalMessage _modalMessage;
 
   /// Creates a modal alert dialog with a [title] and a message.
   ///
   /// The message can be either a plain [text] or a [html] text.
   /// The [accept] function is called when the 'Accept' button is pressed.
-  ModalAlert(this._title, this._text,
-      {bool html, bool show: true, ActionCallback accept: defaultAction}) {
-    this._html = html;
+  ModalAlert(String title, String text,
+      {bool html, ActionCallback accept: defaultAction})
+      : super(title, text, html: html, show: false) {
     this._accept = accept;
-
-    if (show) {
-      open();
-    }
+    open();
   }
 
-  Future<Modal> open() async {
-    if (_modalMessage == null) {
-      _modalMessage = new ModalMessage(_title, _text, html: _html, show: false);
-      await initializeMessages(Intl.defaultLocale).then((dynamic _) {
-        _modalMessage.addButton(ButtonMessage.accept,
-            action: _accept, type: 'primary');
+  @override
+  Future<Modal> open() {
+    if (_open == null) {
+      _open = new Future<Modal>(() async {
+        await initializeMessages(Intl.defaultLocale).then((dynamic _) {
+          addButton(ButtonMessage.accept, action: _accept, type: 'primary');
+        });
+        return super.open();
       });
     }
-    return _modalMessage.open();
+    return _open;
   }
 }

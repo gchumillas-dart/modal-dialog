@@ -55,8 +55,5 @@ class ModalMessage extends ModalDialog {
         ..addTo(_target.find('.modal-footer'))
         ..on('click', () => action(this));
 
-  Future<Modal> open() => new Future<Modal>(() {
-        _modal.show();
-        return _modal;
-      });
+  Future<Modal> open() => new Future<Modal>.value(_modal..show());
 }
