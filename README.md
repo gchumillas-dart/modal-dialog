@@ -49,7 +49,7 @@ void main() {
 
 1. Creates a Modal Message with two buttons:
 ```dart
-new ModalMessage('Delete record', 'Are you sure')
+new ModalMessage('Delete record', 'Are you sure?')
   ..addButton('Cancel')
   ..addButton('Accept', type: 'primary', action: (ModalDialog dialog) {
     print('Deleting record..');
