@@ -11,7 +11,7 @@ dependencies:
   modal_dialog: <version number>
 ```
 
-And then gets the dependencies:
+Gets the dependencies:
 
 ```bash
 > pub get
@@ -43,4 +43,24 @@ void main() {
     dialog.close();
   });
 }
+```
+
+## Examples
+
+1. Creates a Modal Message with two buttons:
+```dart
+new ModalMessage('Delete record', 'Are you sure')
+  ..addButton('Cancel')
+  ..addButton('Accept', type: 'primary', action: (ModalDialog dialog) {
+    print('Deleting record..');
+    dialog.close();
+  });
+```
+
+2. The previous example can be written easily by using the `ModalConfirm` class:
+```dart
+new ModalConfirm('Delete record', 'Are you sure?', accept: (ModalDialog dialog) {
+  print('Deleting record..');
+  dialog.close();
+});
 ```
