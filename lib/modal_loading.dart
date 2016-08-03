@@ -22,7 +22,6 @@ class ModalLoading extends ModalDialog {
   /// dialog.
   ModalLoading(
       {String image: _defaultLoadingImage,
-      bool show: true,
       String locale,
       String cancelLabel,
       _ActionCallback cancel: _defaultAction}) {
@@ -56,7 +55,6 @@ class ModalLoading extends ModalDialog {
 
     _modal =
         new Modal(_target.nativeElement, keyboard: false, backdrop: 'static');
-    if (show) open();
   }
 
   @override

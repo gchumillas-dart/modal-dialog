@@ -43,19 +43,17 @@ class ModalConfirm extends ModalMessage {
   /// calls the [accept] and the [cancel] functions respectively.
   ModalConfirm(String title, String text,
       {bool html,
-      bool show: true,
       String locale,
       String acceptLabel,
       String cancelLabel,
       _ActionCallback accept: _defaultAction,
       _ActionCallback cancel: _defaultAction})
-      : super(title, text, html: html, show: false) {
+      : super(title, text, html: html) {
     this._locale = locale;
     this._acceptLabel = acceptLabel;
     this._cancelLabel = cancelLabel;
     this._accept = accept;
     this._cancel = cancel;
-    if (show) open();
   }
 
   @override

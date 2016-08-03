@@ -10,7 +10,7 @@ class ModalMessage extends ModalDialog {
   /// Creates a modal message dialog with a [title] and a [text].
   ///
   /// The text can be either plain-text or HTML, depending on the [html] flag.
-  ModalMessage(String title, String text, {bool html, bool show: true}) {
+  ModalMessage(String title, String text, {bool html}) {
     _target = $('<div class="modal" role="dialog" />')
       ..add((DomElement target) {
         target
@@ -36,7 +36,6 @@ class ModalMessage extends ModalDialog {
     // Creates a modal dialog and eventually shows it
     _modal =
         new Modal(_target.nativeElement, keyboard: false, backdrop: 'static');
-    if (show) open();
   }
 
   /// Adds a button to the modal dialog.
