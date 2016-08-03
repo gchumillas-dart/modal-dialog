@@ -64,12 +64,16 @@ new ModalConfirm('Delete record', 'Are you sure?', accept: (ModalDialog dialog) 
   dialog.close();
 });
 ```
+![modal_confirm](https://cloud.githubusercontent.com/assets/5312427/17376404/bb822c8a-59b5-11e6-8cc3-039268227fc7.jpg)
+
 3. Creates a Modal Alert message:
 ```dart
 new ModalAlert('Error', 'An error has occurred');
 ```
+![modal_alert](https://cloud.githubusercontent.com/assets/5312427/17376394/a79049e6-59b5-11e6-9686-cf5092c15a54.jpg)
 
 4. Creates a Modal Loading message:
 ```dart
 new ModalLoading();
 ```
+![modal_loading](https://cloud.githubusercontent.com/assets/5312427/17376414/c41c90a6-59b5-11e6-9c26-f3a0f8a122ea.jpg)
