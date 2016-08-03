@@ -28,10 +28,13 @@ part of modal_dialog;
 ///       modal.show();
 ///     });
 ///
-class ModalAlert extends _ModalPreset {
+class ModalAlert extends ModalMessage {
   Future<Modal> _open;
+  String _locale;
   String _acceptLabel;
   _ActionCallback _accept;
+
+  String get locale => _locale;
 
   /// Creates a modal alert dialog with a [title] and a [text].
   ///
@@ -47,7 +50,7 @@ class ModalAlert extends _ModalPreset {
       String locale,
       String acceptLabel,
       _ActionCallback accept: _defaultAction})
-      : super(locale, title, text, html: html) {
+      : super(title, text, html: html, show: false) {
     this._locale = locale;
     this._acceptLabel = acceptLabel;
     this._accept = accept;
@@ -58,7 +61,7 @@ class ModalAlert extends _ModalPreset {
   Future<Modal> open() {
     if (_open == null) {
       _open = new Future<Modal>(() async {
-        String locale = await _getLocale();
+        String locale = await _getLocale(_locale);
         await initializeMessages(locale);
         Intl.withLocale(
             locale,

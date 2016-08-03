@@ -25,8 +25,9 @@ part of modal_dialog;
 ///       modal.show();
 ///     });
 ///
-class ModalConfirm extends _ModalPreset {
+class ModalConfirm extends ModalMessage {
   Future<Modal> _open;
+  String _locale;
   String _acceptLabel;
   String _cancelLabel;
   _ActionCallback _accept;
@@ -48,7 +49,7 @@ class ModalConfirm extends _ModalPreset {
       String cancelLabel,
       _ActionCallback accept: _defaultAction,
       _ActionCallback cancel: _defaultAction})
-      : super(locale, title, text, html: html) {
+      : super(title, text, html: html, show: false) {
     this._locale = locale;
     this._acceptLabel = acceptLabel;
     this._cancelLabel = cancelLabel;
@@ -61,7 +62,7 @@ class ModalConfirm extends _ModalPreset {
   Future<Modal> open() {
     if (_open == null) {
       _open = new Future<Modal>(() async {
-        String locale = await _getLocale();
+        String locale = await _getLocale(_locale);
         await initializeMessages(locale);
         Intl.withLocale(locale, () {
           addButton(_cancelLabel ?? ButtonMessage.cancel, action: _cancel);

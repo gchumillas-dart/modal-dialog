@@ -1,4 +1,3 @@
-// TODO: locale!
 // TODO: cancelLabel!
 part of modal_dialog;
 
@@ -9,7 +8,11 @@ const String _defaultLoadingImage =
 ///
 /// It consists on a modal dialog with a loading image and an 'Accept' button.
 class ModalLoading extends ModalDialog {
+  Future<Modal> _open;
+  DomElement _target;
   Modal _modal;
+  String _locale;
+  String _cancelLabel;
 
   /// Creates a modal loading dialog with a loading [image].
   ///
@@ -24,7 +27,10 @@ class ModalLoading extends ModalDialog {
       String locale,
       String cancelLabel,
       _ActionCallback cancel: _defaultAction}) {
-    DomElement target = $('<div class="modal" role="dialog" />')
+    this._locale = locale;
+    this._cancelLabel = cancelLabel;
+
+    _target = $('<div class="modal" role="dialog" />')
       ..add((DomElement target) {
         target
           ..addElement($('<div class="modal-dialog modal-sm" />')
@@ -50,10 +56,23 @@ class ModalLoading extends ModalDialog {
       ..addTo(find('body'));
 
     _modal =
-        new Modal(target.nativeElement, keyboard: false, backdrop: 'static');
+        new Modal(_target.nativeElement, keyboard: false, backdrop: 'static');
     if (show) open();
   }
 
   @override
-  Future<Modal> open() => new Future<Modal>.value(_modal..show());
+  Future<Modal> open() {
+    if (_open == null) {
+      _open = new Future<Modal>(() async {
+        String locale = await _getLocale(_locale);
+        await initializeMessages(locale);
+        Intl.withLocale(
+            locale,
+            () => _target.find('button')
+              ..text = _cancelLabel ?? ButtonMessage.cancel);
+        return _modal..show();
+      });
+    }
+    return _open;
+  }
 }
