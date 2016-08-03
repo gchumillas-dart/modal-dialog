@@ -1,4 +1,3 @@
-// TODO: cancelLabel!
 part of modal_dialog;
 
 const String _defaultLoadingImage =
