@@ -64,3 +64,12 @@ new ModalConfirm('Delete record', 'Are you sure?', accept: (ModalDialog dialog) 
   dialog.close();
 });
 ```
+3. Creates a Modal Alert message:
+```dart
+new ModalAlert('Error', 'An error has occurred');
+```
+
+4. Creates a Modal Loading message:
+```dart
+new ModalLoading();
+```
