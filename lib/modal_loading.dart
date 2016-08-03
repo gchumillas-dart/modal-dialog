@@ -13,6 +13,8 @@ class ModalLoading extends ModalDialog {
   String _locale;
   String _cancelLabel;
 
+  Modal get modal => _modal;
+
   /// Creates a modal loading dialog with a loading [image].
   ///
   /// The button's label depends on the [locale] parameter, even though it can

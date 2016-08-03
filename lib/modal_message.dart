@@ -7,6 +7,8 @@ class ModalMessage extends ModalDialog {
   DomElement _target;
   Modal _modal;
 
+  Modal get modal => _modal;
+
   /// Creates a modal message dialog with a [title] and a [text].
   ///
   /// The text can be either plain-text or HTML, depending on the [html] flag.
