@@ -37,11 +37,12 @@ And finally import the library from the source code:
 import 'package:modal_dialog/core.dart';
 
 void main() {
-  new ModalConfirm('Delete record', 'Are you sure?',
+  ModalDialog dialog = new ModalConfirm('Delete record', 'Are you sure?',
       accept: (ModalDialog dialog) {
     print('deleting record...');
     dialog.close();
   });
+  dialog.open();
 }
 ```
 
@@ -54,26 +55,35 @@ new ModalMessage('Delete record', 'Are you sure?')
   ..addButton('Accept', type: 'primary', action: (ModalDialog dialog) {
     print('Deleting record..');
     dialog.close();
-  });
+  })
+  ..open();
 ```
 
 2. The previous example can be written easily by using the `ModalConfirm` class:
 ```dart
-new ModalConfirm('Delete record', 'Are you sure?', accept: (ModalDialog dialog) {
+new ModalConfirm('Delete record', 'Are you sure?',
+    accept: (ModalDialog dialog) {
   print('Deleting record..');
   dialog.close();
-});
+})..open();
 ```
 ![modal_confirm](https://cloud.githubusercontent.com/assets/5312427/17376404/bb822c8a-59b5-11e6-8cc3-039268227fc7.jpg)
 
 3. Creates a Modal Alert message:
 ```dart
-new ModalAlert('Error', 'An error has occurred');
+new ModalAlert('Error', 'An error has occurred')..open();
 ```
 ![modal_alert](https://cloud.githubusercontent.com/assets/5312427/17376394/a79049e6-59b5-11e6-9686-cf5092c15a54.jpg)
 
-4. Creates a Modal Loading message:
+4. Creates a Modal Loading message. **A Modal Dialog is not open instantly**. That's why `open()` is an asynchronous function. Note the use of the `await` keyword:
 ```dart
-new ModalLoading();
+ModalDialog dialog = new ModalLoading();
+await dialog.open();
+try {
+  String data = await HttpRequest.getString('some url');
+  print(data);
+} finally {
+  dialog.close();
+}
 ```
 ![modal_loading](https://cloud.githubusercontent.com/assets/5312427/17376414/c41c90a6-59b5-11e6-9c26-f3a0f8a122ea.jpg)
