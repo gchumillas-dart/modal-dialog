@@ -14,5 +14,15 @@ abstract class ModalDialog {
   }
 
   /// Opens the modal dialog.
+  ///
+  /// Note that this method is asynchronous. That means that the modal dialog
+  /// is not open instantly. For example:
+  ///
+  ///     // Note the use of the 'await' keyword
+  ///     ModalDialog dialog = new ModalLoading();
+  ///     await dialog.open();
+  ///     String contents = await HttpRequest.getString(url);
+  ///     dialog.close();
+  ///
   Future<Null> open();
 }
