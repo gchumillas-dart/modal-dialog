@@ -8,7 +8,7 @@ abstract class ModalDialog {
   Modal get modal;
 
   /// Closes the modal dialog.
-  Future<Null> close() async {
+  void close() {
     modal.hide();
     modal.element.remove();
   }
