@@ -7,7 +7,7 @@ const String _defaultLoadingImage =
 ///
 /// It consists on a modal dialog with a loading image and an 'Accept' button.
 class ModalLoading extends ModalDialog {
-  Future<Modal> _open;
+  Future<Null> _open;
   DomElement _target;
   Modal _modal;
   String _locale;
@@ -60,16 +60,16 @@ class ModalLoading extends ModalDialog {
   }
 
   @override
-  Future<Modal> open() {
+  Future<Null> open() async {
     if (_open == null) {
-      _open = new Future<Modal>(() async {
+      _open = new Future<Null>(() async {
         String locale = await _getLocale(_locale);
         await initializeMessages(locale);
         Intl.withLocale(
             locale,
             () => _target.find('button')
               ..text = _cancelLabel ?? ButtonMessage.cancel);
-        return _modal..show();
+        _modal.show();
       });
     }
     return _open;

@@ -58,5 +58,7 @@ class ModalMessage extends ModalDialog {
         ..on('click', () => action(this));
 
   @override
-  Future<Modal> open() => new Future<Modal>.value(_modal..show());
+  Future<Null> open() async {
+    _modal.show();
+  }
 }

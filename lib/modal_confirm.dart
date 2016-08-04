@@ -26,7 +26,7 @@ part of modal_dialog;
 ///     });
 ///
 class ModalConfirm extends ModalMessage {
-  Future<Modal> _open;
+  Future<Null> _open;
   String _locale;
   String _acceptLabel;
   String _cancelLabel;
@@ -57,9 +57,9 @@ class ModalConfirm extends ModalMessage {
   }
 
   @override
-  Future<Modal> open() {
+  Future<Null> open() async {
     if (_open == null) {
-      _open = new Future<Modal>(() async {
+      _open = new Future<Null>(() async {
         String locale = await _getLocale(_locale);
         await initializeMessages(locale);
         Intl.withLocale(locale, () {
@@ -67,7 +67,7 @@ class ModalConfirm extends ModalMessage {
           addButton(_acceptLabel ?? ButtonMessage.accept,
               action: _accept, type: 'primary');
         });
-        return super.open();
+        _modal.show();
       });
     }
     return _open;

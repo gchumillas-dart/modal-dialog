@@ -14,5 +14,5 @@ abstract class ModalDialog {
   }
 
   /// Opens the modal dialog.
-  Future<Modal> open();
+  Future<Null> open();
 }

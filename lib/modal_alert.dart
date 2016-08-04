@@ -29,7 +29,7 @@ part of modal_dialog;
 ///     });
 ///
 class ModalAlert extends ModalMessage {
-  Future<Modal> _open;
+  Future<Null> _open;
   String _locale;
   String _acceptLabel;
   _ActionCallback _accept;
@@ -56,16 +56,16 @@ class ModalAlert extends ModalMessage {
   }
 
   @override
-  Future<Modal> open() {
+  Future<Null> open() async {
     if (_open == null) {
-      _open = new Future<Modal>(() async {
+      _open = new Future<Null>(() async {
         String locale = await _getLocale(_locale);
         await initializeMessages(locale);
         Intl.withLocale(
             locale,
             () => addButton(_acceptLabel ?? ButtonMessage.accept,
                 action: _accept, type: 'primary'));
-        return super.open();
+        _modal.show();
       });
     }
     return _open;
