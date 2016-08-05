@@ -25,7 +25,8 @@ class ModalMessage extends ModalDialog {
       String headerAlign,
       String bodyAlign,
       String footerAlign}) {
-    <String>[align, headerAlign, bodyAlign, footerAlign].forEach((align) {
+    <String>[align, headerAlign, bodyAlign, footerAlign]
+        .forEach((String align) {
       if (align != null && !_validAlignments.contains(align)) {
         throw new ArgumentError.value(align);
       }
