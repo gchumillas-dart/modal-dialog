@@ -46,10 +46,21 @@ class ModalAlert extends ModalMessage {
   /// function. If this parameter is omitted, the dialog is closed by default.
   ModalAlert(String title, String text,
       {bool html,
+      String size,
+      String align,
+      String headerAlign,
+      String bodyAlign,
+      String footerAlign,
       String locale,
       String acceptLabel,
       _ActionCallback accept: _defaultAction})
-      : super(title, text, html: html) {
+      : super(title, text,
+            html: html,
+            size: size,
+            align: align,
+            headerAlign: headerAlign,
+            bodyAlign: bodyAlign,
+            footerAlign: footerAlign) {
     this._locale = locale;
     this._acceptLabel = acceptLabel;
     this._accept = accept;
