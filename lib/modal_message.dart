@@ -4,7 +4,7 @@ part of modal_dialog;
 ///
 /// It consists on a modal message with some buttons.
 class ModalMessage extends ModalDialog {
-  static Map<String, String> _validSizes = <String, String>{
+  static Map<String, String> _dialogSizes = <String, String>{
     'default': '',
     'small': 'modal-sm',
     'large': 'modal-lg'
@@ -18,7 +18,7 @@ class ModalMessage extends ModalDialog {
 
   DomElement _target;
   Modal _modal;
-  String _size = '';
+  String _size = 'default';
   String _headerAlign = 'left';
 
   /// Creates a modal message dialog with a [title] and a [text].
@@ -60,39 +60,34 @@ class ModalMessage extends ModalDialog {
       })
       ..addTo(find('body'));
 
-    // Creates a modal dialog and eventually shows it
     _modal =
         new Modal(_target.nativeElement, keyboard: false, backdrop: 'static');
+    _update();
   }
-
-  Modal get modal => _modal;
 
   /// Header align ('left', 'center', 'right' or 'justify')
   String get headerAlign => _headerAlign;
-  set headerAlign(String value) {
-    _headerAlign = value;
 
+  set headerAlign(String value) {
     if (!_validAlignments.contains(value)) {
       throw new ArgumentError.value(value);
     }
 
-    _target.find('.modal-header h3').css['text-align'] = value;
+    _headerAlign = value;
+    _update();
   }
+
+  Modal get modal => _modal;
 
   /// Modal dialog size ('default', 'small' or 'large').
   String get size => _size;
   set size(String value) {
-    _size = value;
-
-    if (!_validSizes.keys.contains(value)) {
+    if (!_dialogSizes.keys.contains(value)) {
       throw new ArgumentError.value(value);
     }
 
-    DomElement modalDialog = _target.find('.modal-dialog');
-    modalDialog..removeClass('modal-sm')..removeClass('modal-lg');
-    if (value != 'default') {
-      modalDialog.addClass(_validSizes[value]);
-    }
+    _size = value;
+    _update();
   }
 
   /// Adds a button to the modal dialog.
@@ -115,5 +110,16 @@ class ModalMessage extends ModalDialog {
   @override
   Future<Null> open() async {
     _modal.show();
+  }
+
+  void _update() {
+    DomElement modalDialog = _target.find('.modal-dialog');
+    modalDialog..removeClass('modal-sm')..removeClass('modal-lg');
+    if (_size != 'default') {
+      modalDialog.addClass(_dialogSizes[_size]);
+    }
+
+    DomElement h3 = _target.find('.modal-header h3');
+    h3.css['text-align'] = _headerAlign;
   }
 }
