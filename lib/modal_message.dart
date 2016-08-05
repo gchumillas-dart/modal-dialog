@@ -1,5 +1,6 @@
 part of modal_dialog;
 
+// TODO: hide header if text is empty
 /// A modal message.
 ///
 /// It consists on a modal message with some buttons.
@@ -30,7 +31,8 @@ class ModalMessage extends ModalDialog {
                         target.addElement($('<p />')..text = text);
                       }
                     }))
-                  ..addElement($('<div class="modal-footer" />')));
+                  ..addElement($('<div class="modal-footer" />')
+                    ..css['display'] = 'none'));
             }));
       })
       ..addTo(find('body'));
@@ -54,7 +56,7 @@ class ModalMessage extends ModalDialog {
       $('<button class="btn">')
         ..addClass('btn-${type}')
         ..text = title
-        ..addTo(_target.find('.modal-footer'))
+        ..addTo(_target.find('.modal-footer')..css.remove('display'))
         ..on('click', () => action(this));
 
   @override
