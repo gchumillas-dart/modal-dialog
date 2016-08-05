@@ -10,6 +10,7 @@ class ModalMessage extends ModalDialog {
     'large': 'modal-lg'
   };
   static List<String> _validAlignments = <String>[
+    '',
     'left',
     'center',
     'right',
@@ -19,10 +20,10 @@ class ModalMessage extends ModalDialog {
   DomElement _target;
   Modal _modal;
   String _size = 'default';
-  String _align = 'left';
-  String _headerAlign = 'left';
-  String _bodyAlign = 'left';
-  String _footerAlign = 'right';
+  String _align = '';
+  String _headerAlign = '';
+  String _bodyAlign = '';
+  String _footerAlign = '';
 
   /// Creates a modal message dialog with a [title] and a [text].
   ///
@@ -56,7 +57,7 @@ class ModalMessage extends ModalDialog {
     _update();
   }
 
-  /// General align ('left', 'center', 'right' or 'justify')
+  /// General align ('left', 'center', 'right', 'justify' or empty string)
   ///
   /// Specifies the general align (header, body and footer).
   String get align => _align;
@@ -69,7 +70,7 @@ class ModalMessage extends ModalDialog {
     _update();
   }
 
-  /// Body align ('left', 'center', 'right' or 'justify')
+  /// Body align ('left', 'center', 'right', 'justify' or empty string)
   String get bodyAlign => _bodyAlign;
   set bodyAlign(String value) {
     if (!_validAlignments.contains(value)) {
@@ -80,7 +81,7 @@ class ModalMessage extends ModalDialog {
     _update();
   }
 
-  // Footer align ('left', 'center', 'right' or 'justify')
+  // Footer align ('left', 'center', 'right', 'justify' or empty string)
   String get footerAlign => _footerAlign;
   set footerAlign(String value) {
     if (!_validAlignments.contains(value)) {
@@ -91,7 +92,7 @@ class ModalMessage extends ModalDialog {
     _update();
   }
 
-  /// Header align ('left', 'center', 'right' or 'justify')
+  /// Header align ('left', 'center', 'right', 'justify' or empty string)
   String get headerAlign => _headerAlign;
   set headerAlign(String value) {
     if (!_validAlignments.contains(value)) {
@@ -145,12 +146,12 @@ class ModalMessage extends ModalDialog {
     }
 
     DomElement h3 = _target.find('.modal-header h3');
-    h3.css['text-align'] = _headerAlign ?? _align;
+    h3.css['text-align'] = _headerAlign.isEmpty ? _align : _headerAlign;
 
     DomElement body = _target.find('.modal-body');
-    body.css['text-align'] = _bodyAlign ?? _align;
+    body.css['text-align'] = _bodyAlign.isEmpty ? _align : _bodyAlign;
 
     DomElement footer = _target.find('.modal-footer');
-    footer.css['text-align'] = _footerAlign ?? _align;
+    footer.css['text-align'] = _footerAlign.isEmpty ? _align : _footerAlign;
   }
 }
