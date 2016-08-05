@@ -74,16 +74,3 @@ new ModalConfirm('Delete record', 'Are you sure?',
 new ModalAlert('Error', 'An error has occurred')..open();
 ```
 ![modal_alert](https://cloud.githubusercontent.com/assets/5312427/17376394/a79049e6-59b5-11e6-9686-cf5092c15a54.jpg)
-
-4. Creates a Modal Loading message. **A Modal Dialog is not open instantly**. That's why `open()` is an asynchronous function. Note the use of the `await` keyword:
-```dart
-ModalDialog dialog = new ModalLoading();
-await dialog.open();
-try {
-  String data = await HttpRequest.getString('some url');
-  print(data);
-} finally {
-  dialog.close();
-}
-```
-![modal_loading](https://cloud.githubusercontent.com/assets/5312427/17376414/c41c90a6-59b5-11e6-9c26-f3a0f8a122ea.jpg)
