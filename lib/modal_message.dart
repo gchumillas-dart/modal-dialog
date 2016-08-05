@@ -13,7 +13,11 @@ class ModalMessage extends ModalDialog {
   ///
   /// The text can be either plain-text or HTML, depending on the [html] flag.
   ModalMessage(String title, String text,
-      {bool html, String headerAlign, String bodyAlign, String footerAlign}) {
+      {bool html,
+      String align,
+      String headerAlign,
+      String bodyAlign,
+      String footerAlign}) {
     _target = $('<div class="modal" role="dialog" />')
       ..add((DomElement target) {
         target
@@ -23,10 +27,10 @@ class ModalMessage extends ModalDialog {
                 ..addElement($('<div class="modal-content" />')
                   ..addElement($('<div class="modal-header" />')
                     ..addElement($('<h3 />')
-                      ..css['text-align'] = headerAlign
+                      ..css['text-align'] = headerAlign ?? align
                       ..text = title))
                   ..addElement($('<div class="modal-body" />')
-                    ..css['text-align'] = bodyAlign
+                    ..css['text-align'] = bodyAlign ?? align
                     ..add((DomElement target) {
                       if (html) {
                         target.addString(text);
@@ -35,7 +39,7 @@ class ModalMessage extends ModalDialog {
                       }
                     }))
                   ..addElement($('<div class="modal-footer" />')
-                    ..css['text-align'] = footerAlign
+                    ..css['text-align'] = footerAlign ?? align
                     ..css['display'] = 'none'));
             }));
       })
