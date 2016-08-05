@@ -21,12 +21,12 @@ class ModalMessage extends ModalDialog {
   String _size = 'default';
   String _headerAlign = 'left';
   String _bodyAlign = 'left';
+  String _footerAlign = 'right';
 
   /// Creates a modal message dialog with a [title] and a [text].
   ///
   /// The text can be either plain-text or HTML, depending on the [html] flag.
-  ModalMessage(String title, String text,
-      {bool html, String align, String footerAlign}) {
+  ModalMessage(String title, String text, {bool html, String align}) {
     _target = $('<div class="modal" role="dialog" />')
       ..add((DomElement target) {
         target
@@ -45,7 +45,6 @@ class ModalMessage extends ModalDialog {
                       }
                     }))
                   ..addElement($('<div class="modal-footer" />')
-                    ..css['text-align'] = footerAlign ?? align
                     ..css['display'] = 'none'));
             }));
       })
@@ -64,6 +63,17 @@ class ModalMessage extends ModalDialog {
     }
 
     _bodyAlign = value;
+    _update();
+  }
+
+  // Footer align ('left', 'center', 'right' or 'justify')
+  String get footerAlign => _footerAlign;
+  set footerAlign(String value) {
+    if (!_validAlignments.contains(value)) {
+      throw new ArgumentError.value(value);
+    }
+
+    _footerAlign = value;
     _update();
   }
 
@@ -125,5 +135,8 @@ class ModalMessage extends ModalDialog {
 
     DomElement body = _target.find('.modal-body');
     body.css['text-align'] = _bodyAlign;
+
+    DomElement footer = _target.find('.modal-footer');
+    footer.css['text-align'] = _footerAlign;
   }
 }
