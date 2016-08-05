@@ -15,16 +15,13 @@ class ModalMessage extends ModalDialog {
   DomElement _target;
   Modal _modal;
   String _size;
+  String _headerAlign;
 
   /// Creates a modal message dialog with a [title] and a [text].
   ///
   /// The text can be either plain-text or HTML, depending on the [html] flag.
   ModalMessage(String title, String text,
-      {bool html,
-      String align,
-      String headerAlign,
-      String bodyAlign,
-      String footerAlign}) {
+      {bool html, String align, String bodyAlign, String footerAlign}) {
     <String>[align, headerAlign, bodyAlign, footerAlign]
         .forEach((String align) {
       if (align != null && !_validAlignments.contains(align)) {
@@ -66,9 +63,19 @@ class ModalMessage extends ModalDialog {
 
   Modal get modal => _modal;
 
-  /// Modal dialog size ('sm' or 'lg').
-  ///
-  /// Valid values are 'sm' and 'lg' for small or large devices, respectively.
+  /// Header align ('left', 'center', 'right' or 'justify')
+  String get headerAlign => _headerAlign;
+  set headerAlign(String value) {
+    _headerAlign = value;
+
+    if (!_validAlignments.contains(value)) {
+      throw new ArgumentError.value(value);
+    }
+
+    _target.find('.modal-header h3').css['text-align'] = value;
+  }
+
+  /// Modal dialog size ('sm' or 'lg' for small or large devices).
   String get size => _size;
   set size(String value) {
     _size = value;

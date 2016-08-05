@@ -44,7 +44,6 @@ class ModalConfirm extends ModalMessage {
   ModalConfirm(String title, String text,
       {bool html,
       String align,
-      String headerAlign,
       String bodyAlign,
       String footerAlign,
       String locale,
@@ -55,7 +54,6 @@ class ModalConfirm extends ModalMessage {
       : super(title, text,
             html: html,
             align: align,
-            headerAlign: headerAlign,
             bodyAlign: bodyAlign,
             footerAlign: footerAlign) {
     this._locale = locale;
