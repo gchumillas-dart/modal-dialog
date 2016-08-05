@@ -4,7 +4,11 @@ part of modal_dialog;
 ///
 /// It consists on a modal message with some buttons.
 class ModalMessage extends ModalDialog {
-  static List<String> _validSizes = <String>['sm', 'lg'];
+  static Map<String, String> _validSizes = <String, String>{
+    'default': '',
+    'small': 'modal-sm',
+    'large': 'modal-lg'
+  };
   static List<String> _validAlignments = <String>[
     'left',
     'center',
@@ -14,8 +18,8 @@ class ModalMessage extends ModalDialog {
 
   DomElement _target;
   Modal _modal;
-  String _size;
-  String _headerAlign;
+  String _size = '';
+  String _headerAlign = 'left';
 
   /// Creates a modal message dialog with a [title] and a [text].
   ///
@@ -75,19 +79,19 @@ class ModalMessage extends ModalDialog {
     _target.find('.modal-header h3').css['text-align'] = value;
   }
 
-  /// Modal dialog size ('sm' or 'lg' for small or large devices).
+  /// Modal dialog size ('default', 'small' or 'large').
   String get size => _size;
   set size(String value) {
     _size = value;
 
-    if (value.isNotEmpty && !_validSizes.contains(value)) {
+    if (!_validSizes.keys.contains(value)) {
       throw new ArgumentError.value(value);
     }
 
     DomElement modalDialog = _target.find('.modal-dialog');
     modalDialog..removeClass('modal-sm')..removeClass('modal-lg');
-    if (value != null && value.isNotEmpty) {
-      modalDialog.addClass('modal-$value');
+    if (value != 'default') {
+      modalDialog.addClass(_validSizes[value]);
     }
   }
 
