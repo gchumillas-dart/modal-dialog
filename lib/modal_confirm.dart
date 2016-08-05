@@ -43,7 +43,6 @@ class ModalConfirm extends ModalMessage {
   /// calls the [accept] and the [cancel] functions respectively.
   ModalConfirm(String title, String text,
       {bool html,
-      String size,
       String align,
       String headerAlign,
       String bodyAlign,
@@ -55,7 +54,6 @@ class ModalConfirm extends ModalMessage {
       _ActionCallback cancel: _defaultAction})
       : super(title, text,
             html: html,
-            size: size,
             align: align,
             headerAlign: headerAlign,
             bodyAlign: bodyAlign,

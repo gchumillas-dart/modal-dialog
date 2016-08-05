@@ -14,18 +14,13 @@ class ModalMessage extends ModalDialog {
 
   DomElement _target;
   Modal _modal;
+  String _size;
 
   /// Creates a modal message dialog with a [title] and a [text].
   ///
   /// The text can be either plain-text or HTML, depending on the [html] flag.
-  ///
-  /// We can set the [size] of the modal dialog ('sm' or 'lg' for small or
-  /// large devices, respectively), as well as the global [align]. To be more
-  /// specific, we can set the [headerAlign], [bodyAlign] and [footerAlign].
-  /// Valid values are 'left', 'center', 'right' or 'justify'.
   ModalMessage(String title, String text,
       {bool html,
-      String size,
       String align,
       String headerAlign,
       String bodyAlign,
@@ -37,16 +32,11 @@ class ModalMessage extends ModalDialog {
       }
     });
 
-    if (size != null && !_validSizes.contains(size)) {
-      throw new ArgumentError.value(size);
-    }
-
     _target = $('<div class="modal" role="dialog" />')
       ..add((DomElement target) {
         target
           ..addElement($('<div class="modal-dialog" />')
             ..add((DomElement target) {
-              if (size != null) target.addClass('modal-$size');
               target
                 ..addElement($('<div class="modal-content" />')
                   ..addElement($('<div class="modal-header" />')
@@ -75,6 +65,24 @@ class ModalMessage extends ModalDialog {
   }
 
   Modal get modal => _modal;
+
+  /// Modal dialog size ('sm' or 'lg').
+  ///
+  /// Valid values are 'sm' and 'lg' for small or large devices, respectively.
+  String get size => _size;
+  set size(String value) {
+    _size = value;
+
+    if (value.isNotEmpty && !_validSizes.contains(value)) {
+      throw new ArgumentError.value(value);
+    }
+
+    DomElement modalDialog = _target.find('.modal-dialog');
+    modalDialog..removeClass('modal-sm')..removeClass('modal-lg');
+    if (value != null && value.isNotEmpty) {
+      modalDialog.addClass('modal-$value');
+    }
+  }
 
   /// Adds a button to the modal dialog.
   ///
