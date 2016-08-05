@@ -26,8 +26,7 @@ class ModalMessage extends ModalDialog {
   /// The text can be either plain-text or HTML, depending on the [html] flag.
   ModalMessage(String title, String text,
       {bool html, String align, String bodyAlign, String footerAlign}) {
-    <String>[align, headerAlign, bodyAlign, footerAlign]
-        .forEach((String align) {
+    <String>[align, bodyAlign, footerAlign].forEach((String align) {
       if (align != null && !_validAlignments.contains(align)) {
         throw new ArgumentError.value(align);
       }
@@ -41,9 +40,7 @@ class ModalMessage extends ModalDialog {
               target
                 ..addElement($('<div class="modal-content" />')
                   ..addElement($('<div class="modal-header" />')
-                    ..addElement($('<h3 />')
-                      ..css['text-align'] = headerAlign ?? align
-                      ..text = title))
+                    ..addElement($('<h3 />')..text = title))
                   ..addElement($('<div class="modal-body" />')
                     ..css['text-align'] = bodyAlign ?? align
                     ..add((DomElement target) {
