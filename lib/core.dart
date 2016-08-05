@@ -18,7 +18,6 @@ import 'src/intl/messages.dart';
 part 'modal_alert.dart';
 part 'modal_confirm.dart';
 part 'modal_dialog.dart';
-part 'modal_loading.dart';
 part 'modal_message.dart';
 
 /// This is the default action for all buttons.
