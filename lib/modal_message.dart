@@ -7,6 +7,8 @@ class ModalMessage extends ModalDialog {
   DomElement _target;
   Modal _modal;
 
+  static List<String> _validSizes = <String>['sm', 'lg'];
+
   static List<String> _validAlignments = <String>[
     'left',
     'center',
@@ -21,6 +23,7 @@ class ModalMessage extends ModalDialog {
   /// The text can be either plain-text or HTML, depending on the [html] flag.
   ModalMessage(String title, String text,
       {bool html,
+      String size,
       String align,
       String headerAlign,
       String bodyAlign,
@@ -32,11 +35,16 @@ class ModalMessage extends ModalDialog {
       }
     });
 
+    if (size != null && !_validSizes.contains(size)) {
+      throw new ArgumentError.value(size);
+    }
+
     _target = $('<div class="modal" role="dialog" />')
       ..add((DomElement target) {
         target
           ..addElement($('<div class="modal-dialog" />')
             ..add((DomElement target) {
+              if (size != null) target.addClass('modal-$size');
               target
                 ..addElement($('<div class="modal-content" />')
                   ..addElement($('<div class="modal-header" />')
