@@ -44,18 +44,13 @@ class ModalConfirm extends ModalMessage {
   ModalConfirm(String title, String text,
       {bool html,
       String align,
-      String bodyAlign,
       String footerAlign,
       String locale,
       String acceptLabel,
       String cancelLabel,
       _ActionCallback accept: _defaultAction,
       _ActionCallback cancel: _defaultAction})
-      : super(title, text,
-            html: html,
-            align: align,
-            bodyAlign: bodyAlign,
-            footerAlign: footerAlign) {
+      : super(title, text, html: html, align: align, footerAlign: footerAlign) {
     this._locale = locale;
     this._acceptLabel = acceptLabel;
     this._cancelLabel = cancelLabel;

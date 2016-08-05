@@ -20,18 +20,13 @@ class ModalMessage extends ModalDialog {
   Modal _modal;
   String _size = 'default';
   String _headerAlign = 'left';
+  String _bodyAlign = 'left';
 
   /// Creates a modal message dialog with a [title] and a [text].
   ///
   /// The text can be either plain-text or HTML, depending on the [html] flag.
   ModalMessage(String title, String text,
-      {bool html, String align, String bodyAlign, String footerAlign}) {
-    <String>[align, bodyAlign, footerAlign].forEach((String align) {
-      if (align != null && !_validAlignments.contains(align)) {
-        throw new ArgumentError.value(align);
-      }
-    });
-
+      {bool html, String align, String footerAlign}) {
     _target = $('<div class="modal" role="dialog" />')
       ..add((DomElement target) {
         target
@@ -42,7 +37,6 @@ class ModalMessage extends ModalDialog {
                   ..addElement($('<div class="modal-header" />')
                     ..addElement($('<h3 />')..text = title))
                   ..addElement($('<div class="modal-body" />')
-                    ..css['text-align'] = bodyAlign ?? align
                     ..add((DomElement target) {
                       if (html) {
                         target.addString(text);
@@ -62,9 +56,19 @@ class ModalMessage extends ModalDialog {
     _update();
   }
 
+  /// Body align ('left', 'center', 'right' or 'justify')
+  String get bodyAlign => _bodyAlign;
+  set bodyAlign(String value) {
+    if (!_validAlignments.contains(value)) {
+      throw new ArgumentError.value(value);
+    }
+
+    _bodyAlign = value;
+    _update();
+  }
+
   /// Header align ('left', 'center', 'right' or 'justify')
   String get headerAlign => _headerAlign;
-
   set headerAlign(String value) {
     if (!_validAlignments.contains(value)) {
       throw new ArgumentError.value(value);
@@ -118,5 +122,8 @@ class ModalMessage extends ModalDialog {
 
     DomElement h3 = _target.find('.modal-header h3');
     h3.css['text-align'] = _headerAlign;
+
+    DomElement body = _target.find('.modal-body');
+    body.css['text-align'] = _bodyAlign;
   }
 }

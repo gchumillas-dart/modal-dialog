@@ -47,16 +47,11 @@ class ModalAlert extends ModalMessage {
   ModalAlert(String title, String text,
       {bool html,
       String align,
-      String bodyAlign,
       String footerAlign,
       String locale,
       String acceptLabel,
       _ActionCallback accept: _defaultAction})
-      : super(title, text,
-            html: html,
-            align: align,
-            bodyAlign: bodyAlign,
-            footerAlign: footerAlign) {
+      : super(title, text, html: html, align: align, footerAlign: footerAlign) {
     this._locale = locale;
     this._acceptLabel = acceptLabel;
     this._accept = accept;
