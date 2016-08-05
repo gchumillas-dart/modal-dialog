@@ -21,6 +21,11 @@ class ModalMessage extends ModalDialog {
   /// Creates a modal message dialog with a [title] and a [text].
   ///
   /// The text can be either plain-text or HTML, depending on the [html] flag.
+  ///
+  /// We can set the [size] of the modal dialog ('sm' or 'lg' for small or
+  /// large devices, respectively), as well as the global [align]. To be more
+  /// specific, we can set the [headerAlign], [bodyAlign] and [footerAlign].
+  /// Valid values are 'left', 'center', 'right' or 'justify'.
   ModalMessage(String title, String text,
       {bool html,
       String size,
