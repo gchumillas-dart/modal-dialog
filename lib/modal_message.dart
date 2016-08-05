@@ -7,6 +7,13 @@ class ModalMessage extends ModalDialog {
   DomElement _target;
   Modal _modal;
 
+  static List<String> _validAlignments = <String>[
+    'left',
+    'center',
+    'right',
+    'justify'
+  ];
+
   Modal get modal => _modal;
 
   /// Creates a modal message dialog with a [title] and a [text].
@@ -18,6 +25,12 @@ class ModalMessage extends ModalDialog {
       String headerAlign,
       String bodyAlign,
       String footerAlign}) {
+    <String>[align, headerAlign, bodyAlign, footerAlign].forEach((align) {
+      if (align != null && !_validAlignments.contains(align)) {
+        throw new ArgumentError.value(align);
+      }
+    });
+
     _target = $('<div class="modal" role="dialog" />')
       ..add((DomElement target) {
         target
