@@ -1,6 +1,5 @@
 part of modal_dialog;
 
-// TODO: hide header if text is empty
 /// A modal message.
 ///
 /// It consists on a modal message with some buttons.
