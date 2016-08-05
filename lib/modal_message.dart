@@ -4,11 +4,7 @@ part of modal_dialog;
 ///
 /// It consists on a modal message with some buttons.
 class ModalMessage extends ModalDialog {
-  DomElement _target;
-  Modal _modal;
-
   static List<String> _validSizes = <String>['sm', 'lg'];
-
   static List<String> _validAlignments = <String>[
     'left',
     'center',
@@ -16,7 +12,8 @@ class ModalMessage extends ModalDialog {
     'justify'
   ];
 
-  Modal get modal => _modal;
+  DomElement _target;
+  Modal _modal;
 
   /// Creates a modal message dialog with a [title] and a [text].
   ///
@@ -76,6 +73,8 @@ class ModalMessage extends ModalDialog {
     _modal =
         new Modal(_target.nativeElement, keyboard: false, backdrop: 'static');
   }
+
+  Modal get modal => _modal;
 
   /// Adds a button to the modal dialog.
   ///
